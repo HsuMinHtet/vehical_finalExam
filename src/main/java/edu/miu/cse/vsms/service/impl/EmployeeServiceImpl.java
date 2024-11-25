@@ -13,6 +13,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -68,21 +69,26 @@ public class EmployeeServiceImpl implements EmployeeService {
         // Apply each update based on the key
         updates.forEach((key, value) -> {
             switch (key) {
-                case "name": {
-                  // employee.setName(updates.get(key));
-                }
-
+                case "name": 
+                    if((String)updates.get("name")!=null){
+                        employee.setName((String) updates.get("name"));
+                    }
                     break;
                 case "email":
-                    // Write your code here
+                    if((String)updates.get("email")!=null){
+                        employee.setEmail((String) updates.get("email"));
+                    }
 
                     break;
                 case "phone":
-                    // Write your code here
-
+                    if((String)updates.get("phone")!=null){
+                        employee.setPhone((String) updates.get("phone"));
+                    }
                     break;
                 case "hireDate":
-                    // Write your code here
+                    if((LocalDate) updates.get("hireDate")!=null ){
+                        employee.setHireDate((LocalDate) updates.get("hireDate"));
+                    }
 
                     break;
                 default:
